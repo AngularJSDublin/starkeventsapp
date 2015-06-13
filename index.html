@@ -16,119 +16,36 @@
 
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+        <base href="/">
+
     </head>
     <body ng-app='eventsApp'>
   
         <h1>Hi! This is Your Angular Application Boilerplate. 3</h1>
-        
-        <div ng-controller="SampleController as ctrl">
-            <p>{{ctrl.welcome}}</p>
-        </div>
-
-        <div ng-controller="SecondController">
-            <p>{{welcomeAgain}}</p>
-        </div>
-        <div ng-controller="eventController">
-          <form>
-          <div class="row">
-              <div class="row">
-                <div class='col-md-3 col-md-offset-1'>
-                    <p>Start date/time</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-2 col-md-offset-1'>
-                    <div class="input-group">  
-                        <input type='date' class="form-control" ng-model="event.startDate" />
-                    </div>
-                </div>
-                <div class='col-md-1'>
-                    <div class='input-group'>
-                       <input type='time' class="form-control" ng-model="event.startTime" />
-                    </div>
-                </div>
-                <div class='col-md-1'>
-                    
-                       <p>IMG</p>
-                    
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-3 col-md-offset-1'>
-                    <p>End date/time</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-2 col-md-offset-1'>
-                    <div class="input-group">  
-                        <input type='date' class="form-control" ng-model="event.endDate" />
-                    </div>
-                </div>
-                <div class='col-md-2'>
-                    <div class='input-group'>
-                       <input type='time' class="form-control" ng-model="event.endTime" />
-                    </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-3 col-md-offset-1'>
-                    <p>Title:</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-3 col-md-offset-1'>
-                    <input type="text" class="form-control" ng-model="event.title"/> 
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-3 col-md-offset-1'>
-                    <p>Image URL:</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-3 col-md-offset-1'>
-                    <input type="text" class="form-control" ng-model="event.imageUrl"/> 
-                </div>
-              </div>
-            </div>
-            <div class="row"> 
-              <div class="row">
-                <div class='col-md-4 col-md-offset-1'>
-                    <p>Description:</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-4 col-md-offset-1'>
-                    <textarea type="text" class="form-control" ng-model="event.description"></textarea> 
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-4 col-md-offset-1'>
-                    <p>longitude and latitude (for the maps):</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class='col-md-2 col-md-offset-1'>
-                    <input type="text" class="form-control" ng-model="event.longitude" /> 
-                </div>
-                <div class='col-md-2'>
-                    <input type="text" class="form-control" ng-model="event.latitude" /> 
-                </div>
-              </div>
-            </div>
-              <div class="row">
-                <div class='col-md-5 col-md-offset-4'>
-                    <button type="submit" class="btn btn-success" ng-click="addEvent()">Add event</button>
-                </div>
-              </div>
-          </form>
-        </div>
+        <a href="/add-event">add event</a><br>
+        <a href="/event-list">event list</a><br>
+ 
+         <div ng-view></div> 
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="assets/js/vendor/jquery-1.11.3.min.js"></script>
-        <script src="assets/js/vendor/bootstrap.min.js"></script>
-        <script src="assets/js/vendor/angular.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.min.js"></script> 
+        <script src="assets/js/vendor/angular.min.js"></script> 
+        <script src="assets/js/vendor/angular-route.min.js"></script>
+
+        <script src="app/components/backend/init.js"></script>
+        <script src="app/components/backend/event.factory.js"></script>
+        <script src="app/components/backend/category.factory.js"></script>
+
+        <script src="app/components/list-events/init.js"></script> 
+        <script src="app/components/list-events/directive-list-event.js"></script>
+        <script src="app/components/list-events/list-events.js"></script>
+
+        <script src="app/components/add-event/add-events.js"></script>
+
         <script src="app/app.js"></script>
+ 
 
     </body>
 </html>
