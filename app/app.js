@@ -11,8 +11,7 @@
 	angular
 		.module('eventsApp')
 		 .config(router);
-
-
+	
 	router.$inject = ['$routeProvider', '$locationProvider'];
 
     //creating the routes
@@ -22,7 +21,9 @@
 
 		$routeProvider
 		  .when('/add-event', {
-		  	templateUrl: 'app/components/add-event/add-event.html'
+		  	templateUrl: 'app/components/add-event/add-event.html' 
+		  	controller: 'addEventController'
+ 
 		  })
 		  .when('/event-list', {
 		  	templateUrl: 'app/components/list-events/list-event.html',
