@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-	var app = angular.module('eventsApp', []);
+	var app = angular.module('eventsApp', ['eventsApp.directives']);
 
 	//controller as syntax
 	app.controller('SampleController', function(){
@@ -10,6 +10,6 @@
 
 	app.controller("SecondController", function($scope){
 		$scope.welcomeAgain = 'By the end of the workshops you will build the Angular events app and hopefully understand the framework on deeper level.'
-	})
+		})
 
 })()
