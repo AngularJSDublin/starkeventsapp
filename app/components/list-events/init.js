@@ -1,1 +1,1 @@
-angular.module('eventsApp.listEvents', []);
+angular.module('eventsApp.controllers', []);

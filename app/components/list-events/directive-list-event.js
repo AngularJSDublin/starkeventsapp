@@ -1,11 +1,6 @@
-/**
- * Created by Sergey on 13-Jun-15.
- */
-(function (angular) {
-    'use strict';
+'use strict';
 
-
-	angular.module('eventsApp.directives', [])
+angular.module('eventsApp.directives', [])
 .directive('listEvent', function() {
 console.log("works");
 
@@ -21,7 +16,3 @@ console.log("works");
 	  };
 	}
 );
-
-});
-
-

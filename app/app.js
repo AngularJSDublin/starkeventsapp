@@ -4,7 +4,8 @@
 	var app = angular.module('eventsApp', [
 		'ngRoute',
 		'eventsApp.backend',
-		'eventsApp.directives'
+		'eventsApp.directives',
+		'eventsApp.controllers'
 	]);
 
 	angular
@@ -21,17 +22,15 @@
 
 		$routeProvider
 		  .when('/add-event', {
-		  	templateUrl: 'components/add-event/add-event.html'
+		  	templateUrl: 'app/components/add-event/add-event.html'
 		  })
 		  .when('/event-list', {
-		  	templateUrl: 'components/event-list/event-list.html',
-			controller: eventListController;
+		  	templateUrl: 'app/components/list-events/list-event.html',
+			controller: 'listEventController'
 		  })
 		  .otherwise({
 		    redirectTo: '/'
-		  });
-
-		
+		  }); 
 	}
 
 })();
