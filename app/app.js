@@ -4,6 +4,7 @@
 
 	var app = angular.module('eventsApp', [
 		'ngRoute',
+		'eventsApp.backend',
 		'eventsApp.directives'
 	]);
 
@@ -12,7 +13,7 @@
 		 .config(router);
 
 
-//creating the routes 
+    //creating the routes
 	function router ($routeProvider, $locationProvider) {
 		  // use the HTML5 History API
         $locationProvider.html5Mode(true);
@@ -31,4 +32,4 @@
 		
 	}
 
-})()
+})();
