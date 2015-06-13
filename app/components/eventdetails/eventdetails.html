@@ -1,0 +1,24 @@
+        <div ng-controller="EventDetailsController" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img ng-src="{{event.image_url}}" class="img-responsive" />
+            </div>
+        </div><br>
+        <div class="row">
+            <div >
+                <div class="col-md-9" id="eventdetails-description">
+                    <h1>{{event.eventname}}</h1>
+                    <p>{{event.descript}}</p>
+                </div>
+            </div>
+            <div class="col-md-3 panel panel-default" id="eventdetails-address">
+                {{event.venue}}<br>
+                {{event.city}}<br><br>
+                <div id="event-map">
+                    <img ng-src="{{event.googlemapsrc}}" class="img-responsive"/>
+                </div>
+                <br><br>
+                <a class="btn btn-primary" href="#" role="button">Register</a><br><br>
+            </div>
+        </div>
+        </div>
