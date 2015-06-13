@@ -13,6 +13,8 @@
 		 .config(router);
 
 
+	router.$inject = ['$routeProvider', '$locationProvider'];
+
     //creating the routes
 	function router ($routeProvider, $locationProvider) {
 		  // use the HTML5 History API
