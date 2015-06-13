@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-	var app = angular.module('eventsApp', ['eventsApp.directives']);
+	var app = angular.module('eventsApp', ['eventsApp.backend', 'eventsApp.listEvents']);
 
 	//controller as syntax
 	app.controller('SampleController', function(){
