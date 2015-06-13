@@ -1,4 +1,4 @@
-angular.module('eventsApp')
+angular.module('eventsApp.addEvent')
 .controller("addEventController", function($scope){
 		$scope.event = {
 			title:"Title",

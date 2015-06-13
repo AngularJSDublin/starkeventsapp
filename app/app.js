@@ -5,7 +5,8 @@
 		'ngRoute',
 		'eventsApp.backend',
 		'eventsApp.directives',
-		'eventsApp.controllers'
+		'eventsApp.controllers',
+		'eventsApp.addEvent'
 	]);
 
 	angular
@@ -21,7 +22,7 @@
 
 		$routeProvider
 		  .when('/add-event', {
-		  	templateUrl: 'app/components/add-event/add-event.html' 
+		  	templateUrl: 'app/components/add-event/add-event.html',
 		  	controller: 'addEventController'
  
 		  })
