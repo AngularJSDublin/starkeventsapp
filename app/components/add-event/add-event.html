@@ -4,31 +4,31 @@
     <div class="form-group">
       <label class="control-label col-md-11" style="text-align:left;">Start date / time</label>
       <div class="col-md-8">
-        <input type="date" class="form-control" id="startDate" ng-model="event.startDate" />
+        <input type="date" class="form-control" id="startDate" ng-model="event.date" />
       </div>
       <div class="col-md-3">
-        <input type="time" class="form-control" id="startTime" ng-model="event.startDate" />  
+        <input type="time" class="form-control" id="startTime" ng-model="event.date" />  
       </div>
     </div>
     <div class="form-group">
       <label for="endDate" class="control-label col-md-11" style="text-align:left;">End date / time</label>
       <div class="col-md-8">
-        <input type="date" class="form-control col-md-5" id="endDate" ng-model="event.endDate" />
+        <input type="date" class="form-control col-md-5" id="endDate" ng-model="event.date" />
       </div>
       <div class="col-md-3">
-        <input type="time" class="form-control" id="endTime" ng-model="event.endDate" />
+        <input type="time" class="form-control" id="endTime" ng-model="event.date" />
       </div>
     </div>
     <div class="form-group">
       <label for="title" class="control-label col-md-11" style="text-align:left;">Title</label>
       <div class="col-md-11">
-        <input type="text" class="form-control" id="title" ng-model="event.title"/> 
+        <input type="text" class="form-control" id="name" ng-model="event.name"/> 
       </div>
     </div>
     <div class="form-group">
       <label for="imgUrl" class="control-label col-md-11" style="text-align:left;">Image URL</label>
       <div class="col-md-11">
-        <input type="text" class="form-control" id="imgUrl" ng-model="event.imageUrl"/> 
+        <input type="text" class="form-control" id="imgUrl" ng-model="event.image_url"/> 
       </div>
     </div>
     <div class="form-group">
@@ -42,10 +42,10 @@
         longitude and latitude (for the maps):
       </label>
       <div class="col-md-6">
-        <input type="text" class="form-control" id="longitude" ng-model="event.longitude" /> 
+        <input type="text" class="form-control" id="longitude" ng-model="event.location.lng" /> 
       </div>
       <div class="col-md-6">
-        <input type="text" class="form-control" id="latitude" ng-model="event.latitude" /> 
+        <input type="text" class="form-control" id="latitude" ng-model="event.location.lat" /> 
       </div>
     </div>
     <div class="col-md-offset-10">
