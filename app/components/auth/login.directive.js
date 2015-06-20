@@ -13,10 +13,12 @@
                 };
             });
 
-    LoginController.$inject = ['$scope'];
-    function LoginController($scope) {
+    LoginController.$inject = ['$scope', 'authService'];
+    function LoginController($scope, authService) {
         var vm = this;
         vm.onSubmit = OnSubmit;
+
+        console.log('authService', authService);
 
         function OnSubmit () {
             console.log('Submit', vm);
