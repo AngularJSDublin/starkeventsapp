@@ -72,7 +72,7 @@
             var url = 'https://starkeventsdb.firebaseio.com/categories/' + id + '.json';
             name = '"' + name + '"';
 
-            $http
+            return $http
                 .put(url, name)
                 .then(editComplete)
                 .catch(editFailed);

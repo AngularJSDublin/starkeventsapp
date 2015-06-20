@@ -6,7 +6,8 @@
 		'eventsApp.backend',
 		'eventsApp.directives',
 		'eventsApp.controllers',
-		'eventsApp.addEvent'
+		'eventsApp.addEvent',
+		'eventsApp.auth'
 	]);
 
 	angular
@@ -21,6 +22,9 @@
        // $locationProvider.html5Mode(true);
 
 		$routeProvider
+		  .when('/login', {
+		  	templateUrl: 'app/components/login/login.template.html'
+		  })
 		  .when('/add-event', {
 		  	templateUrl: 'app/components/add-event/add-event.html',
 		  	controller: 'addEventController'
