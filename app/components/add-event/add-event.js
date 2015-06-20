@@ -1,10 +1,13 @@
 angular.module('eventsApp.addEvent')
 .controller("addEventController", ['$scope', 'EventService',
 		function($scope, eventService){
+			$scope.addVisible = true;
+
 			$scope.event = {
 				"name": "Title",
 				"description": "Description",
-				"date": new Date("July 21, 2015 13:50"),
+				"StartDate": new Date("July 21, 2015 13:50"),
+				"EndDate": new Date("July 21, 2015 13:50"),
 				"location": {
 				  "lat": 53.3168242,
 				  "lng": -6.2015825

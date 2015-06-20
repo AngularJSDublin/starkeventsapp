@@ -64,15 +64,17 @@
 
         function add(eventObj) {
             // bad approach, should use other id declaration
-            return getList().then(function (data) {
-                return edit(data.length, eventObj);
-            });
+            return getList()
+                .then(function (data) {
+                    var id = data.length;
+                    return edit(id, eventObj);
+                });
         }
 
         function edit(id, eventObj) {
             var url = 'https://starkeventsdb.firebaseio.com/events/' + id + '.json';
 
-            $http
+            return $http
                 .put(url, eventObj)
                 .then(editComplete)
                 .catch(editFailed);

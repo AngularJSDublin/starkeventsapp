@@ -1,22 +1,22 @@
 <div class="container">
-<form class="form-horizontal" role="form" ng-controller="addEventController">
+<form class="form-horizontal" role="form">
   <div class="row col-md-8">
     <div class="form-group">
       <label class="control-label col-md-11" style="text-align:left;">Start date / time</label>
       <div class="col-md-8">
-        <input type="date" class="form-control" id="startDate" ng-model="event.date" />
+        <input type="date" class="form-control" id="startDate" ng-model="event.StartDate" />
       </div>
       <div class="col-md-3">
-        <input type="time" class="form-control" id="startTime" ng-model="event.date" />  
+        <input type="time" class="form-control" id="startTime" ng-model="event.StartDate" />  
       </div>
     </div>
     <div class="form-group">
       <label for="endDate" class="control-label col-md-11" style="text-align:left;">End date / time</label>
       <div class="col-md-8">
-        <input type="date" class="form-control col-md-5" id="endDate" ng-model="event.date" />
+        <input type="date" class="form-control col-md-5" id="endDate" ng-model="event.EndDate" />
       </div>
       <div class="col-md-3">
-        <input type="time" class="form-control" id="endTime" ng-model="event.date" />
+        <input type="time" class="form-control" id="endTime" ng-model="event.EndDate" />
       </div>
     </div>
     <div class="form-group">
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="col-md-offset-10">
-      <button type="submit" class="btn btn-success" ng-click="addEvent()">Add event</button>
+      <button type="submit" class="btn btn-success" ng-click="addEvent()" ng-show="addVisible">Add event</button>
     </div>
   </div>
   <!-- BEGIN Image -->
