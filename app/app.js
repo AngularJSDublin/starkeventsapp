@@ -1,6 +1,6 @@
-'use strict';
-
 (function(){ 
+	'use strict';
+
 	var app = angular.module('eventsApp', [
 		'ngRoute',
 		'eventsApp.backend',
@@ -12,16 +12,16 @@
 		.module('eventsApp')
 		 .config(router);
 	
-	router.$inject = ['$routeProvider', '$locationProvider'];
+	router.$inject = ['$routeProvider'];
 
     //creating the routes
-	function router ($routeProvider, $locationProvider) {
+	function router ($routeProvider) {
 		  // use the HTML5 History API
-        $locationProvider.html5Mode(true);
+       // $locationProvider.html5Mode(true);
 
 		$routeProvider
 		  .when('/add-event', {
-		  	templateUrl: 'app/components/add-event/add-event.html' 
+		  	templateUrl: 'app/components/add-event/add-event.html',
 		  	controller: 'addEventController'
  
 		  })
@@ -29,9 +29,7 @@
 		  	templateUrl: 'app/components/list-events/list-event.html',
 			controller: 'listEventController'
 		  })
-		  .otherwise({
-		    redirectTo: '/'
-		  }); 
+		  .otherwise({redirectTo: '/'}); 
 	}
 
 })();
