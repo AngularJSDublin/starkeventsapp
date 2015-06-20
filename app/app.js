@@ -5,7 +5,8 @@
 		'ngRoute',
 		'eventsApp.backend',
 		'eventsApp.directives',
-		'eventsApp.controllers'
+		'eventsApp.controllers',
+		'eventsApp.addEvent'
 	]);
 
 	angular
