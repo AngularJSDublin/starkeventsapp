@@ -4,22 +4,35 @@
 
 	var EventDetailsController = function ($scope, $routeParams, EventService){
 		$scope.eventId = $routeParams.eventId;
-
+		
 		//console.log($scope.eventId);
 
 		EventService.getById($scope.eventId).then(
 			function(res){
 				console.log(res)
 				$scope.event = res;
+				$scope.zoom = 14;
 
-				var googlemapsrcstr = "https://maps.googleapis.com/maps/api/staticmap?center=" + $scope.event.location.lat + "," + $scope.event.location.lng + "&zoom=14&size=300x300&markers=color:red|"+ $scope.event.location.lat + "," + $scope.event.location.lng;
-				$scope.event.googlemapsrc = googlemapsrcstr
+				//var googlemapsrcstr =				$scope.event.googlemapsrc = googlemapsrcstr
+
 			}
-		); 
+		);
+
+		$scope.zoomIn = function(){
+			$scope.zoom++;
+		};
+
+		$scope.zoomOut = function(){
+			$scope.zoom--;
+		};
+
+
+
+
 		
 	};
 
-	
+
 		
 	app.controller('EventDetailsController',["$scope", "$routeParams","EventService", EventDetailsController]);
 

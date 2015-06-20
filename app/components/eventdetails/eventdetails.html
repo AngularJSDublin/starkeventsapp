@@ -15,10 +15,16 @@
                 {{event.venue}}<br>
                 {{event.city}}<br><br>
                 <div id="event-map">
-                    <img ng-src="{{event.googlemapsrc}}" class="img-responsive"/>
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{event.location.lat}},{{event.location.lng}}&zoom={{zoom}}&size=300x300&markers=color:red|{{event.location.lat}},{{event.location.lng}}" class="img-responsive"/>
                 </div>
-                <br><br>
-                <a class="btn btn-primary" href="#" role="button">Register</a><br><br>
+                <br>
+                <button class="btn btn-primary" ng-click="zoomIn()">Zoom in</button>
+                 <button class="btn btn-primary" ng-click="zoomOut()">Zoom out</button> 
+
+                <br>
+                <a class="btn btn-primary" href="#" role="button">Register</a> <br>
+
+                <br>
             </div>
         </div>
     </div>
