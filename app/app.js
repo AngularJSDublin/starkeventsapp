@@ -6,7 +6,8 @@
 		'eventsApp.backend',
 		'eventsApp.directives',
 		'eventsApp.controllers',
-		'eventsApp.addEvent'
+		'eventsApp.addEvent',
+		'eventsApp.editEvent'
 	]);
 
 	angular
@@ -24,6 +25,11 @@
 		  .when('/add-event', {
 		  	templateUrl: 'app/components/add-event/add-event.html',
 		  	controller: 'addEventController'
+ 
+		  })
+		  .when('/edit-event', {
+		  	templateUrl: 'app/components/edit-event/edit-event.html',
+		  	controller: 'editEventController'
  
 		  })
 		  .when('/event-list', {
