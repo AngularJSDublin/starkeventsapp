@@ -7,7 +7,8 @@
 		'eventsApp.directives',
 		'eventsApp.controllers',
 		'eventsApp.addEvent',
-		'eventsApp.editEvent'
+		'eventsApp.editEvent',
+		'eventsApp.auth'
 	]);
 
 	angular
@@ -22,6 +23,9 @@
        // $locationProvider.html5Mode(true);
 
 		$routeProvider
+		  .when('/login', {
+		  	templateUrl: 'app/components/login/login.template.html'
+		  })
 		  .when('/add-event', {
 		  	templateUrl: 'app/components/add-event/add-event.html',
 		  	controller: 'addEventController'
@@ -36,6 +40,10 @@
 		  	templateUrl: 'app/components/list-events/list-event.html',
 			controller: 'listEventController'
 		  })
+		  .when("/event/:eventId", {
+			templateUrl: "app/components/eventdetails/eventdetails.html",
+			controller: "EventDetailsController"
+		})
 		  .otherwise({redirectTo: '/'}); 
 	}
 
