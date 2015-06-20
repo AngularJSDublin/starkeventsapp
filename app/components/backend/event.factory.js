@@ -10,7 +10,11 @@
 
     function EventService($http, $log) {
         return  {
-            getList: getList
+            getList: getList,
+            getById: getById,
+            deleteById: deleteById,
+            add: add,
+            edit: edit
         };
 
         function getList() {
@@ -59,6 +63,7 @@
         }
 
         function add(eventObj) {
+            // bad approach, should use other id declaration
             return getList().then(function (data) {
                 return edit(data.length, eventObj);
             });
