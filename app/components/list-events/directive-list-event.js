@@ -6,7 +6,8 @@ console.log("works");
 
 	  return { 
 	  	scope : {
-	  		event: "="
+	  		event: "=",
+	  		eventId: "="
 	  	}, 	
 	  	restrict: 'E' ,
 	    templateUrl: 'app/components/list-events/directive-list-event.html' ,

@@ -30,6 +30,10 @@
 		  	templateUrl: 'app/components/list-events/list-event.html',
 			controller: 'listEventController'
 		  })
+		  .when("/event/:eventId", {
+			templateUrl: "app/components/eventdetails/eventdetails.html",
+			controller: "EventDetailsController"
+		})
 		  .otherwise({redirectTo: '/'}); 
 	}
 
