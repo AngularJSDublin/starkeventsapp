@@ -1,0 +1,72 @@
+<div class="container">
+<form class="form-horizontal" role="form" name="eventForm" novalidate>
+  <div class="alert alert-success col-md-8" ng-show="showSuccessAlert">
+    <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button>{{textAlert}}
+  </div>
+  <div class="alert alert-danger col-md-8" ng-show="showErrorAlert">
+    <button type="button" class="close" data-ng-click="switchBool('showErrorAlert')">×</button>{{textAlert}}
+  </div>
+  <div class="row col-md-8">
+    <div class="form-group">
+      <label class="control-label col-md-11" style="text-align:left;">Start date / time</label>
+      <div class="col-md-8">
+        <input type="date" class="form-control" id="startDate" ng-model="event.StartDate" required/>
+      </div>
+      <div class="col-md-3">
+        <input type="time" class="form-control" id="startTime" ng-model="event.StartDate" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-md-11" style="text-align:left;">End date / time</label>
+      <div class="col-md-8">
+        <input type="date" class="form-control col-md-5" id="endDate" ng-model="event.EndDate" required/>
+      </div>
+      <div class="col-md-3">
+        <input type="time" class="form-control" id="endTime" ng-model="event.EndDate" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="control-label col-md-11" style="text-align:left;">Title</label>
+      <div class="col-md-11">
+        <input type="text" class="form-control" id="name" ng-model="event.name" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="imgUrl" class="control-label col-md-11" style="text-align:left;">Image URL</label>
+      <div class="col-md-11">
+        <input type="text" class="form-control" id="imgUrl" ng-model="event.image_url" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="control-label col-md-12" style="text-align:left;">Description</label>
+      <div class="col-md-12">
+        <textarea type="text" class="form-control" id="description" ng-model="event.description" required></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="longitude" class="control-label col-md-12" style="text-align:left;">
+        longitude and latitude (for the maps):
+      </label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="longitude" ng-model="event.location.lng" required/>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="latitude" ng-model="event.location.lat" required/>
+      </div>
+    </div>
+    <div class="col-md-offset-10" ng-show="addVisible">
+      <button type="submit" class="btn btn-success" ng-click="eventForm.$valid && addEvent()">Add event</button>
+    </div>
+    <div ng-show="!addVisible">
+      <button type="submit" class="btn btn-danger" ng-click="deleteEvent()">Remove event</button>
+      <button type="submit" class="btn btn-error col-md-offset-7" ng-click="cancelEvent()">Cancel</button>
+      <button type="submit" class="btn btn-success" ng-click="eventForm.$valid && saveEvent()">Save</button>
+    </div>
+  </div>
+  <!-- BEGIN Image -->
+  <div class="col-md-4" >
+      <p>IMAGE</p>
+  </div>
+  <!-- END Image -->
+</form>
+</div>

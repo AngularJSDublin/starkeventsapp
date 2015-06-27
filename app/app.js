@@ -7,6 +7,7 @@
 		'eventsApp.directives',
 		'eventsApp.controllers',
 		'eventsApp.addEvent',
+		'eventsApp.editEvent',
 		'eventsApp.auth'
 	]);
 
@@ -28,6 +29,10 @@
 		  .when('/add-event', {
 		  	templateUrl: 'app/components/add-event/add-event.html',
 		  	controller: 'addEventController'
+		  })
+		  .when('/edit-event/:eventId', {
+		  	templateUrl: 'app/components/edit-event/edit-event.html',
+		  	controller: 'editEventController'
  
 		  })
 		  .when('/event-list', {

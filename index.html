@@ -45,6 +45,10 @@
         <make-map map="map"></make-map>
         </div> -->
 
+         <div ng-view></div>
+
+
+        <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="assets/js/vendor/jquery-1.11.3.min.js"></script>
         <script src="assets/js/vendor/bootstrap.min.js"></script> 
@@ -52,9 +56,16 @@
         <script src="assets/js/vendor/angular-route.min.js"></script>
         <script src="assets/js/vendor/angular-route.js"></script>
 
+        <script src="app/components/auth/init.js"></script>
+        <script src="app/components/auth/firebase.service.js"></script>
+        <script src="app/components/auth/auth.service.js"></script>
+        <script src="app/components/auth/login.directive.js"></script>
+
         <script src="app/components/backend/init.js"></script>
         <script src="app/components/backend/event.factory.js"></script>
         <script src="app/components/backend/category.factory.js"></script>
+        <script src="app/components/backend/admin.factory.js"></script>
+
 
         <script src="app/components/list-events/init.js"></script>
         <script src="app/components/list-events/list-event-controller.js"></script> 
@@ -62,16 +73,17 @@
         
         <script src="app/components/add-event/init.js"></script>
         <script src="app/components/add-event/add-event.js"></script>
+        <script src="app/components/event/directive-event.js"></script>
+
+        <script src="app/components/edit-event/init.js"></script>
+        <script src="app/components/edit-event/edit-event.js"></script>
 
         <script src="app/components/eventdetails/event-details-controller.js"></script>
-
-        <script src="app/components/auth/init.js"></script>
-        <script src="app/components/auth/login.directive.js"></script>
 
         <!--try map directive -->
         <script src="app/components/map/directive-map.js"></script>
 
 
-        <script src="app/app.js"></script>  
+        <script src="app/app.js"></script>
     </body>
 </html>
