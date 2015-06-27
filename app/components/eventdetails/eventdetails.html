@@ -1,31 +1,21 @@
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <img ng-src="{{event.image_url}}" class="img-responsive" />
-            </div>
-        </div><br>
-        <div class="row">
-            <div >
-                <div class="col-md-9" id="eventdetails-description">
-                    <h1>{{::event.name}}</h1>
-                    <p>{{event.description}}</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 panel panel-default" id="eventdetails-address">
+            </div>            
+			<div class="col-md-4" id="eventdetails-description">
+				<h1>{{::event.name}}</h1>
+				<p>{{event.description}}</p>
+			</div>
+            <div class="col-md-4 panel panel-default" id="eventdetails-address">
                 {{event.venue}}<br>
                 {{event.city}}<br><br>
-
-                
-
                 <br>
+				<!-- try a flexible directive -->
+				<make-map map="map"></make-map>
             </div>
 
-            <!-- try a flexible directive -->
-           
-
-
-
+            
 
         </div>
     </div>
