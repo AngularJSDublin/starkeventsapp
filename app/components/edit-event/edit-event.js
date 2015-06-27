@@ -9,16 +9,34 @@ angular.module('eventsApp.editEvent')
 
 			eventService.getById($scope.eventId).then(
 				function(res){
-					$scope.event = res;
-					$scope.event.StartDate = new Date(res.StartDate);
-					$scope.event.EndDate = new Date(res.EndDate);
+					if(res != null) {
+						$scope.event = res;
+						$scope.event.StartDate = new Date(res.StartDate);
+						$scope.event.EndDate = new Date(res.EndDate);
+					}else{
+						$scope.showErrorAlert = true;
+						$scope.textAlert = "Event doesn't exist";
+					}
+				}
+			).catch(
+				function(res){
+					$scope.showErrorAlert = true;
+					$scope.textAlert = "Event doesn't exist";
 				}
 			);
 
 			$scope.deleteEvent = function(){
 				eventService.deleteById($scope.eventId).then(
-					function(res){
-						console.log(res);
+					function(result){
+						console.log(result);
+						$scope.showSuccessAlert = true;
+						$scope.textAlert = "Event deleted";
+						$scope.event = {};
+					}
+				).catch(
+					function(result){
+						$scope.showErrorAlert = true;
+						$scope.textAlert = "Error";
 					}
 				);
 			};
@@ -32,7 +50,12 @@ angular.module('eventsApp.editEvent')
 					function(res){
 						console.log(res);
 						$scope.showSuccessAlert = true;
-						$scope.successTextAlert = "Edit complete!";
+						$scope.textAlert = "Edit completed";
+					}
+				).catch(
+					function(result){
+						$scope.showErrorAlert = true;
+						$scope.textAlert = "Error";
 					}
 				);
 			};

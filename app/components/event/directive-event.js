@@ -9,7 +9,8 @@ angular.module('eventsApp.directives')
 			scope: {
 				event: "=",
 				showSuccessAlert: "=",
-				successTextAlert: "=",
+				showErrorAlert: "=",
+				textAlert: "=",
 				type: "@",
 				add: "&",
 				delete: "&",

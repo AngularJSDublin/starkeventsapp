@@ -2,29 +2,19 @@ angular.module('eventsApp.addEvent')
 .controller("addEventController", ['$scope', 'EventService',
 		function($scope, eventService){
 
-			$scope.event = {
-				"name": "Title",
-				"description": "Description",
-				"StartDate": new Date("July 21, 2015 13:50"),
-				"EndDate": new Date("July 21, 2015 13:50"),
-				"location": {
-				  "lat": 53.3168242,
-				  "lng": -6.2015825
-				},
-				"allSpots": 12000,
-				"availableSpots": 3423,
-				"image_url":"https://static.pexels.com/photos/2361/nature-animal-wolf-wilderness.jpg"
-
-			};
-
-			$scope.action = "add";
+			$scope.showSuccessAlert = false;
+			$scope.showErrorAlert 	= false;
 
 			$scope.addEvent = function(){
 
 				eventService.add($scope.event).then(function(result){
+					$scope.textAlert = "Event added!";
 					console.log($scope.event);
 					console.log('Event added', result);
-					$scope.event ={};
+					$scope.showSuccessAlert = true;
+				}).catch(function(result){
+					$scope.showErrorAlert = true;
+					$scope.textAlert = "Error";
 				});
 			};
 
