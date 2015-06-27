@@ -27,6 +27,23 @@
         <a href="#/event-list">event list</a><br>
  
          <div ng-view></div> 
+         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+
+         <br>This is a test for a flexible map directive<br>
+        <div ng-controller="EventDetailsController"> 
+        <form name="location">
+            <label>
+                Lon:
+               <input type="number" name="lng" ng-model="map.lng">
+            </label>
+            <label>
+                Lat:
+               <input type="number" name="lat" ng-model="map.lat">
+            </label>
+        </form>
+
+        <make-map map="map"></make-map>
+        </div> -->
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="assets/js/vendor/jquery-1.11.3.min.js"></script>
@@ -50,6 +67,9 @@
 
         <script src="app/components/auth/init.js"></script>
         <script src="app/components/auth/login.directive.js"></script>
+
+        <!--try map directive -->
+        <script src="app/components/map/directive-map.js"></script>
 
 
         <script src="app/app.js"></script>  

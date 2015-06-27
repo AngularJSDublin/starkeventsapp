@@ -6,34 +6,33 @@
 		$scope.eventId = $routeParams.eventId;
 		
 		//console.log($scope.eventId);
+		
+		
+		if ($routeParams.eventId){
+			EventService.getById($scope.eventId).then(
+				function(res){
+					//console.log(res)
+					$scope.event = res;
+					$scope.map = {
+						lat: res.location.lat,
+						lng: res.location.lng,
+						zoom: 14,
+						address: 'Trinity College Dublin, Dublin'.split(" ").join("+")
+					};
+				}
+			);
+		}else{
+			$scope.map = {
+			lat: 55,
+			lng: 22,
+			zoom: 14,
+			address: 'Trinity College Dublin, Dublin'.split(" ").join("+")
 
-		EventService.getById($scope.eventId).then(
-			function(res){
-				console.log(res)
-				$scope.event = res;
-				$scope.zoom = 14;
-
-				//var googlemapsrcstr =				$scope.event.googlemapsrc = googlemapsrcstr
-
-			}
-		);
-
-		$scope.zoomIn = function(){
-			$scope.zoom++;
-		};
-
-		$scope.zoomOut = function(){
-			$scope.zoom--;
-		};
-
-
-
-
+			};
+		}
 		
 	};
-
-
-		
+	
 	app.controller('EventDetailsController',["$scope", "$routeParams","EventService", EventDetailsController]);
 
 
