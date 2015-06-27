@@ -22,9 +22,9 @@ angular.module('eventsApp.addEvent')
 			$scope.addEvent = function(){
 
 				eventService.add($scope.event).then(function(result){
+					console.log($scope.event);
 					console.log('Event added', result);
 					$scope.event ={};
-					$scope.message = result.message;
 				});
 			};
 

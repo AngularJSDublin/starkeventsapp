@@ -1,35 +1,40 @@
 angular.module('eventsApp.editEvent')
-.controller("editEventController", ['$scope', '$routeParams','EventService',
-		function($scope,$routeParams,eventService){
+.controller("editEventController", ['$scope', '$routeParams','EventService','$location',
+		function($scope,$routeParams,eventService,$location){
 
-			// parameter used to hide/unhide buttons 
-			$scope.addVisible = false;
+			$scope.showSuccessAlert = false;
+
 			// take a eventId 
 			$scope.eventId = $routeParams.eventId;
 
 			eventService.getById($scope.eventId).then(
 				function(res){
-					console.log((res.StartDate instanceof Date));
-					console.log(typeof res.StartDate);
-					console.log(res.StartDate);
+					$scope.event = res;
 					$scope.event.StartDate = new Date(res.StartDate);
 					$scope.event.EndDate = new Date(res.EndDate);
 				}
 			);
 
 			$scope.deleteEvent = function(){
-
-				console.log('Click Delete');
+				eventService.deleteById($scope.eventId).then(
+					function(res){
+						console.log(res);
+					}
+				);
 			};
 
 			$scope.cancelEvent = function(){
-
-				console.log('Click Cancel');
+				$location.url('/event-list');
 			};
 
 			$scope.saveEvent = function(){
-
-				console.log('Click Save');
+				eventService.edit($scope.eventId,$scope.event).then(
+					function(res){
+						console.log(res);
+						$scope.showSuccessAlert = true;
+						$scope.successTextAlert = "Edit complete!";
+					}
+				);
 			};
 
 		}]);

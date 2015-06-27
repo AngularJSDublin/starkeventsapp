@@ -8,6 +8,8 @@ angular.module('eventsApp.directives')
 			restrict: "EA",
 			scope: {
 				event: "=",
+				showSuccessAlert: "=",
+				successTextAlert: "=",
 				type: "@",
 				add: "&",
 				delete: "&",
@@ -39,6 +41,11 @@ angular.module('eventsApp.directives')
 				} else{
 					$scope.addVisible =false;
 				}
+
+				// switch flag
+				$scope.switchBool = function (value) {
+					$scope[value] = !$scope[value];
+				};
 			}
 		};
 	}

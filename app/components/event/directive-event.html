@@ -1,6 +1,8 @@
 <div class="container">
-<div id="messages" ng-show="message">{{ message }}</div>
 <form class="form-horizontal" role="form">
+  <div class="alert alert-success col-md-8" ng-show="showSuccessAlert">
+    <button type="button" class="close" data-ng-click="switchBool('showSuccessAlert')">×</button><strong>{{successTextAlert}}</strong>
+  </div>
   <div class="row col-md-8">
     <div class="form-group">
       <label class="control-label col-md-11" style="text-align:left;">Start date / time</label>
