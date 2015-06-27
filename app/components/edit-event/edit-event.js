@@ -1,23 +1,35 @@
 angular.module('eventsApp.editEvent')
-.controller("editEventController", ['$scope', 'EventService',
-		function($scope, eventService){
-			$scope.addVisible = false;
+.controller("editEventController", ['$scope', '$routeParams','EventService',
+		function($scope,$routeParams,eventService){
 
-			$scope.event = {
-				"name": "EDIT",
-				"description": "Description",
-				"StartDate": new Date("July 21, 2015 13:50"),
-				"EndDate": new Date("July 21, 2015 13:50"),
-				"location": {
-				  "lat": 53.3168242,
-				  "lng": -6.2015825
-				},
-				"allSpots": 12000,
-				"availableSpots": 3423,
-				"image_url":"https://static.pexels.com/photos/2361/nature-animal-wolf-wilderness.jpg"
- 
+			// parameter used to hide/unhide buttons 
+			$scope.addVisible = false;
+			// take a eventId 
+			$scope.eventId = $routeParams.eventId;
+
+			eventService.getById($scope.eventId).then(
+				function(res){
+					console.log((res.StartDate instanceof Date));
+					console.log(typeof res.StartDate);
+					console.log(res.StartDate);
+					$scope.event.StartDate = new Date(res.StartDate);
+					$scope.event.EndDate = new Date(res.EndDate);
+				}
+			);
+
+			$scope.deleteEvent = function(){
+
+				console.log('Click Delete');
 			};
 
-			
+			$scope.cancelEvent = function(){
+
+				console.log('Click Cancel');
+			};
+
+			$scope.saveEvent = function(){
+
+				console.log('Click Save');
+			};
 
 		}]);

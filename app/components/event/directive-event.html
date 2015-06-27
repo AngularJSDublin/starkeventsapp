@@ -1,4 +1,5 @@
 <div class="container">
+<div id="messages" ng-show="message">{{ message }}</div>
 <form class="form-horizontal" role="form">
   <div class="row col-md-8">
     <div class="form-group">
@@ -20,7 +21,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="title" class="control-label col-md-11" style="text-align:left;">Title</label>
+      <label for="name" class="control-label col-md-11" style="text-align:left;">Title</label>
       <div class="col-md-11">
         <input type="text" class="form-control" id="name" ng-model="event.name"/> 
       </div>
@@ -48,13 +49,13 @@
         <input type="text" class="form-control" id="latitude" ng-model="event.location.lat" /> 
       </div>
     </div>
-    <div class="col-md-offset-10">
-      <button type="submit" class="btn btn-success" ng-click="addEvent()" ng-show="addVisible">Add event</button>
+    <div class="col-md-offset-10" ng-show="addVisible">
+      <button type="submit" class="btn btn-success" ng-click="addEvent()">Add event</button>
     </div>
     <div ng-show="!addVisible">
       <button type="submit" class="btn btn-danger" ng-click="deleteEvent()">Remove event</button>
-      <button type="submit" class="btn btn-error col-md-offset-7" ng-click="deleteEvent()">Cancel</button>
-      <button type="submit" class="btn btn-success" ng-click="deleteEvent()">Save</button>
+      <button type="submit" class="btn btn-error col-md-offset-7" ng-click="cancelEvent()">Cancel</button>
+      <button type="submit" class="btn btn-success" ng-click="saveEvent()">Save</button>
     </div>
   </div>
   <!-- BEGIN Image -->

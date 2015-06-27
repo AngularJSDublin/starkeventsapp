@@ -1,7 +1,6 @@
 angular.module('eventsApp.addEvent')
 .controller("addEventController", ['$scope', 'EventService',
 		function($scope, eventService){
-			$scope.addVisible = true;
 
 			$scope.event = {
 				"name": "Title",
@@ -18,10 +17,15 @@ angular.module('eventsApp.addEvent')
 
 			};
 
+			$scope.action = "add";
+
 			$scope.addEvent = function(){
+
 				eventService.add($scope.event).then(function(result){
 					console.log('Event added', result);
+					$scope.event ={};
+					$scope.message = result.message;
 				});
-			}
+			};
 
 		}]);
