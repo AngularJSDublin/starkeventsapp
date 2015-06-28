@@ -15,9 +15,9 @@
 			templateUrl: 'app/components/map/map.html',
 			link: link,
 			controller: mapController,
-			scope: {
+			/*scope: {
 				map: '='
-			}	
+			}	*/
 		};
 		return directive;
 
@@ -37,12 +37,13 @@
 
 		function mapController($scope) {
 				console.log("in event details map directive controller");
-				console.log($scope.map);
-				/*if($scope.map.address){
-					$scope.addressFlag = true;
-					}else{
-					$scope.addressFlag = false;
-				}*/
+				console.log("showing scope map" + $scope.map);
+				$scope.returnLocationOrNot = function(){
+					if($scope.map.address)
+						return true;
+					else
+						return false;	
+				};
 		}		
 	}
 

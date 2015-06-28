@@ -1,6 +1,12 @@
 <div>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{map.lat}},{{map.lng}}&zoom={{map.zoom}}&size=300x300&markers=color:red|{{map.lat}},{{map.lng}}" class="img-responsive" ng-if="!map.address"/>
-    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{map.address}}&zoom={{map.zoom}}&size=300x300&markers=color:red|{{map.address}}" class="img-responsive" ng-if="map.address"/>
+<!--    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{map.lat}},{{map.lng}}&zoom={{map.zoom}}&size=300x300&markers=color:red|{{map.lat}},{{map.lng}}" 
+	class="img-responsive" ng-if="!map.address"/>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{map.address}}&zoom={{map.zoom}}&size=300x300&markers=color:red|{{map.address}}" 
+	class="img-responsive" ng-if="map.address"/> -->
+	<img src="https://maps.googleapis.com/maps/api/staticmap?center={{map.lat}},{{map.lng}}&zoom={{map.zoom}}&size=300x300&markers=color:red|{{map.lat}},{{map.lng}}" 
+	class="img-responsive" ng-if="!returnAddressOrNot()"/>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{map.address}}&zoom={{map.zoom}}&size=300x300&markers=color:red|{{map.address}}" 
+	class="img-responsive" ng-if="returnAddressOrNot()"/> 
 	<br>
 	<button class="btn btn-primary" ng-click="zoomIn()">Zoom in</button>
  	<button class="btn btn-primary" ng-click="zoomOut()">Zoom out</button> 

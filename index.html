@@ -21,13 +21,24 @@
 
     </head>
     <body ng-app='eventsApp'>
+	<header>
+			<nav class="navbar navbar-default role='navigation'>
+				<div class="container">					
+						<a class="navbar-brand " id="" href="#/">AngularJS Event App</a>											
+										
+						<ul class="nav nav-pills">
+							<li role="presentation" ><a href="#/add-event">Add Event</a></li>
+							<li role="presentation"><a  href="#/event-list">Event List</a></li>
+						</ul>
+				
+				</div>
+			</nav>
+	</header>
   
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins)
         <h1>Hi! This is Your Angular Application Boilerplate. 3</h1>
         <a href="#/add-event">add event</a><br>
         <a href="#/event-list">event list</a><br>
- 
-         <div ng-view></div> 
-         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
 
          <br>This is a test for a flexible map directive<br>
         <div ng-controller="EventDetailsController"> 
@@ -44,7 +55,8 @@
 
         <make-map map="map"></make-map>
         </div> -->
-
+		<div ng-view></div> 
+	
         <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="assets/js/vendor/jquery-1.11.3.min.js"></script>
