@@ -1,30 +1,20 @@
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <img ng-src="{{event.image_url}}" class="img-responsive" />
+            </div>            
+			<div class="col-md-4" id="eventdetails-description">
+				<h1>{{::event.name}}</h1>
+				<h4>{{event.date}}</h4>
+				<p>{{event.description}}</p>
+			</div>
+            <div class="col-md-4 panel panel-default" id="eventdetails-address">
+                {{event.venue}},{{ event.city}}<br>
+				<!-- try a flexible directive -->
+				<make-map map="map"></make-map>
             </div>
-        </div><br>
-        <div class="row">
-            <div >
-                <div class="col-md-9" id="eventdetails-description">
-                    <h1>{{::event.name}}</h1>
-                    <p>{{event.description}}</p>
-                </div>
-            </div>
-            <div class="col-md-3 panel panel-default" id="eventdetails-address">
-                {{event.venue}}<br>
-                {{event.city}}<br><br>
-                <div id="event-map">
-                    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{event.location.lat}},{{event.location.lng}}&zoom={{zoom}}&size=300x300&markers=color:red|{{event.location.lat}},{{event.location.lng}}" class="img-responsive"/>
-                </div>
-                <br>
-                <button class="btn btn-primary" ng-click="zoomIn()">Zoom in</button>
-                 <button class="btn btn-primary" ng-click="zoomOut()">Zoom out</button> 
 
-                <br>
-                <a class="btn btn-primary" href="#" role="button">Register</a> <br>
+            
 
-                <br>
-            </div>
         </div>
     </div>

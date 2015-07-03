@@ -1,7 +1,16 @@
 <div>
-	<img src="#" >
-	<header>{{event.title}}</header>
-	<section>{{event.description}}</section>
-	<a href="#/event/{{eventId}}">Details</a>
-	<a href="#/edit-event/{{eventId}}">Edit Event</a>
+	<div class="row">
+		<div class="col-md-4">
+			
+			<h2>{{event.name}}</h2>
+			<p>{{truncDesc()}}</p>
+			<a href="#/event/{{eventId}}"><button class="btn btn-primary">Details</button></a>
+			<a href="#/edit-event/{{eventId}}"><button class="btn btn-primary" ng-click="zoomIn()">Edit Event</button></a>
+	
+		</div>
+		<div class="col-md-2">
+			<img ng-src="{{event.image_url}}" class="img-responsive" >
+		</div>
+	</div>
+	<hr/>
 </div>

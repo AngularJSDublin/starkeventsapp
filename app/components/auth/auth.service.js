@@ -15,6 +15,8 @@
         $q = promise;
 
         this.create = CreateUser;
+        this.remove = RemoveUser;
+
         this.login = Login;
         this.logout = Logout;
 
@@ -34,6 +36,32 @@
             } else {
                 console.log("Authenticated successfully with payload:", authData);
                 deferred.resolve(authData);
+            }
+        });
+        return deferred.promise;
+    }
+
+    function RemoveUser(loginEmail, password) {
+        var deferred = $q.defer();
+        fbase.removeUser({
+            email    : loginEmail,
+            password : password
+        }, function(error, authData) {
+            if (error) {
+                switch (error.code) {
+                    case "INVALID_USER":
+                        console.log("The specified user account does not exist.");
+                        break;
+                    case "INVALID_PASSWORD":
+                        console.log("The specified user account password is incorrect.");
+                        break;
+                    default:
+                        console.log("Error removing user:", error);
+                }
+                deferred.reject(error);
+            } else {
+                console.log("User account deleted successfully!");
+                deferred.resolve();
             }
         });
         return deferred.promise;

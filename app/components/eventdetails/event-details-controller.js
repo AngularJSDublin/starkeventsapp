@@ -2,39 +2,43 @@
 
 	var app = angular.module("eventsApp.controllers");
 
-	var EventDetailsController = function ($scope, $routeParams, EventService){
+	var EventDetailsController = function ($scope, $routeParams,$q, EventService){
 		$scope.eventId = $routeParams.eventId;
 		
-		//console.log($scope.eventId);
+		console.log("in event details controller");
+		
+		
+		if ($routeParams.eventId){
+			
+			console.log("in event details controller:: get by id before call");
+			EventService.getById($scope.eventId).then(
+				function(res){
+					//console.log(res)
+					console.log("in event details controller:: get by id");
+					$scope.event = res;
+					$scope.map = {
+						lat: res.location.lat,
+						lng: res.location.lng,
+						zoom: 14,
+						//address: 'Trinity College Dublin, Dublin'.split(" ").join("+")
+						address: res.venue + ',' + res.city
+					};
+				}
+			)
+			
+		}else{
+			$scope.map = {
+			lat: 55,
+			lng: 22,
+			zoom: 14,
+			address: 'Trinity College Dublin, Dublin'.split(" ").join("+")
 
-		EventService.getById($scope.eventId).then(
-			function(res){
-				console.log(res)
-				$scope.event = res;
-				$scope.zoom = 14;
-
-				//var googlemapsrcstr =				$scope.event.googlemapsrc = googlemapsrcstr
-
-			}
-		);
-
-		$scope.zoomIn = function(){
-			$scope.zoom++;
-		};
-
-		$scope.zoomOut = function(){
-			$scope.zoom--;
-		};
-
-
-
-
+			};
+		}
 		
 	};
-
-
-		
-	app.controller('EventDetailsController',["$scope", "$routeParams","EventService", EventDetailsController]);
+	
+	app.controller('EventDetailsController',["$scope", "$routeParams","$q","EventService", EventDetailsController]);
 
 
 

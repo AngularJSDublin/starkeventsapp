@@ -7,3 +7,5 @@ form.submitted .ng-invalid{
 .ng-valid.ng-dirty {
     border-color: green;
 }
+
+hr { border-top: 2px solid black}
