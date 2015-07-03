@@ -21,6 +21,8 @@ angular.module('eventsApp.directives')
 			controller: function($scope){
 				console.log($scope);
 
+				$scope.textAlert = "Form not valid";
+
 				$scope.addEvent = function(){
 					$scope.add();
 				}

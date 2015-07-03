@@ -1,7 +1,9 @@
 .ng-invalid.ng-dirty {
     border-color: red;
 }
-
+form.submitted .ng-invalid{
+    border-color: red;
+}
 .ng-valid.ng-dirty {
     border-color: green;
 }
