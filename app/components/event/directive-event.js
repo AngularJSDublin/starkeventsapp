@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('eventsApp.directives')
-	.directive('eventDirective', function() {
+	.directive('eventDirective',function() {
 		console.log("works");
 
 		return {
 			restrict: "EA",
 			scope: {
 				event: "=",
+				categories: "=",
 				showSuccessAlert: "=",
 				showErrorAlert: "=",
 				textAlert: "=",
@@ -19,7 +20,7 @@ angular.module('eventsApp.directives')
 			},
 			templateUrl: 'app/components/event/directive-event.html',
 			controller: function($scope){
-				console.log($scope);
+				console.log($scope.categories);
 
 				$scope.textAlert = "Form not valid";
 

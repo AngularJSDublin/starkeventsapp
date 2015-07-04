@@ -1,9 +1,17 @@
 angular.module('eventsApp.addEvent')
-.controller("addEventController", ['$scope', 'EventService',
-		function($scope, eventService){
+.controller("addEventController", ['$scope', 'EventService','CategoryService',
+		function($scope, eventService, categoryService){
 
 			$scope.showSuccessAlert = false;
 			$scope.showErrorAlert 	= false;
+
+			$scope.categories = [];
+
+			categoryService.getList($scope.categories).then(function(result){
+				if(result != null) {
+					$scope.categories = result;
+				}
+			})
 
 			$scope.addEvent = function(){
 

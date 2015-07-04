@@ -26,6 +26,12 @@
       </div>
     </div>
     <div class="form-group">
+      <label for="category" class="control-label col-md-11" style="text-align:left;">Category</label>
+      <div class="col-md-11">
+        <select ng-options="o as o for o in categories" class="form-control" id="category" ng-model="event.category" required/>
+      </div>
+    </div>
+    <div class="form-group">
       <label for="name" class="control-label col-md-11" style="text-align:left;">Title</label>
       <div class="col-md-11">
         <input type="text" class="form-control" id="name" ng-model="event.name" required/>
@@ -63,6 +69,7 @@
       <button type="submit" class="btn btn-success" ng-click="eventForm.$valid && saveEvent()">Save</button>
     </div>
   </div>
+  {{$scope.categories[0]}}
   <!-- BEGIN Image -->
   <div class="col-md-4" >
       <p>IMAGE</p>

@@ -1,11 +1,18 @@
 angular.module('eventsApp.editEvent')
-.controller("editEventController", ['$scope', '$routeParams','EventService','$location',
-		function($scope,$routeParams,eventService,$location){
+.controller("editEventController", ['$scope', '$routeParams','EventService','$location','CategoryService',
+		function($scope,$routeParams,eventService,$location,categoryService){
 
 			$scope.showSuccessAlert = false;
 
 			// take a eventId 
 			$scope.eventId = $routeParams.eventId;
+
+			$scope.categories = [];
+			categoryService.getList($scope.categories).then(function(result){
+				if(result != null) {
+					$scope.categories = result;
+				}
+			})
 
 			eventService.getById($scope.eventId).then(
 				function(res){
