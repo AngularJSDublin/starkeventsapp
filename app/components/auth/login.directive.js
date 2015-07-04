@@ -7,6 +7,9 @@
             .directive('login', function() {
                 return {
                     restrict: 'E' ,
+                    scope: {
+                        role: '@'
+                    },
                     templateUrl: 'app/components/auth/login.template.html' ,
                     controller: LoginController,
                     controllerAs: 'vm'

@@ -6,9 +6,16 @@
     angular.module('eventsApp.backend')
         .factory('CategoryService', CategoryService)
 
-    CategoryService.$inject = ['$http', '$log'];
+    CategoryService.$inject = ['$http', '$log', 'CommonBackendService'];
 
-    function CategoryService($http, $log) {
+    function CategoryService($http, $log, service) {
+
+        service.setup({
+            name: 'CategoryService',
+            url: 'https://starkeventsdb.firebaseio.com/categories',
+            useAuth: false
+        });
+
         return  {
             getList: getList,
             getById: getById,
@@ -18,71 +25,23 @@
         };
 
         function getList() {
-            var url = 'https://starkeventsdb.firebaseio.com/categories.json';
-            return $http
-                .get(url)
-                .then(getListComplete)
-                .catch(getListFailed);
-
-            function getListComplete(responce) {
-                return responce.data;
-            }
-            function getListFailed(error) {
-                $log.error('XHR Failed for CategoryService.getList: ' + JSON.stringify(error.data, null, 2));
-            }
+            return service.getList();
         }
 
         function getById(id) {
-            var url = 'https://starkeventsdb.firebaseio.com/categories/' + id + '.json';
-            return $http
-                .get(url)
-                .then(getByIdComplete)
-                .catch(getByIdFailed);
-
-            function getByIdComplete(responce) {
-                return responce.data;
-            }
-            function getByIdFailed(error) {
-                $log.error('XHR Failed for CategoryService.getById: ' + JSON.stringify(error.data, null, 2));
-            }
+            return service.getById(id);
         }
 
         function deleteById(id) {
-            var url = 'https://starkeventsdb.firebaseio.com/categories/' + id + '.json';
-            return $http
-                .delete(url)
-                .then(deleteByIdComplete)
-                .catch(deleteByIdFailed);
-
-            function deleteByIdComplete(responce) {
-                return responce.status === 200;
-            }
-            function deleteByIdFailed(error) {
-                $log.error('XHR Failed for CategoryService.deleteById: ' + JSON.stringify(error.data, null, 2));
-            }
+            return service.deleteById(id);
         }
 
         function add(name) {
-            return getList().then(function (data) {
-                return edit(data.length, name);
-            });
+            return service.add(name);
         }
 
         function edit(id, name) {
-            var url = 'https://starkeventsdb.firebaseio.com/categories/' + id + '.json';
-            name = '"' + name + '"';
-
-            return $http
-                .put(url, name)
-                .then(editComplete)
-                .catch(editFailed);
-
-            function editComplete(responce) {
-                return responce.data;
-            }
-            function editFailed(error) {
-                $log.error('XHR Failed for CategoryService add / edit: ' + JSON.stringify(error.data, null, 2));
-            }
+            return service.edit(id, name);
         }
     }
 })(angular);

@@ -6,9 +6,18 @@
     angular.module('eventsApp.backend')
         .factory('EventService', EventService);
 
-    EventService.$inject = ['$http', '$log'];
+    EventService.$inject = ['$http', '$log', 'CommonBackendService', 'FirebaseService'];
 
-    function EventService($http, $log) {
+    function EventService($http, $log, service, firebase) {
+
+        var ref = firebase.getInstance();
+
+        service.setup({
+            name: 'EventService',
+            url: 'https://starkeventsdb.firebaseio.com/events',
+            useAuth: false
+        });
+        
         return  {
             getList: getList,
             getById: getById,
@@ -18,73 +27,23 @@
         };
 
         function getList() {
-            var url = 'https://starkeventsdb.firebaseio.com/events.json';
-            return $http
-                .get(url)
-                .then(getListComplete)
-                .catch(getListFailed);
-
-            function getListComplete(responce) {
-                return responce.data;
-            }
-            function getListFailed(error) {
-                $log.error('XHR Failed for EventService.getList: ' + JSON.stringify(error.data, null, 2));
-            }
+            return service.getList();
         }
 
         function getById(id) {
-            var url = 'https://starkeventsdb.firebaseio.com/events/' + id + '.json';
-            return $http
-                .get(url)
-                .then(getByIdComplete)
-                .catch(getByIdFailed);
-
-            function getByIdComplete(responce) {
-                return responce.data;
-            }
-            function getByIdFailed(error) {
-                $log.error('XHR Failed for EventService.getById: ' + JSON.stringify(error.data, null, 2));
-            }
+            return service.getById(id);
         }
 
         function deleteById(id) {
-            var url = 'https://starkeventsdb.firebaseio.com/events/' + id + '.json';
-            return $http
-                .delete(url)
-                .then(deleteByIdComplete)
-                .catch(deleteByIdFailed);
-
-            function deleteByIdComplete(responce) {
-                return responce.status === 200;
-            }
-            function deleteByIdFailed(error) {
-                $log.error('XHR Failed for EventService.deleteById: ' + JSON.stringify(error.data, null, 2));
-            }
+            return service.deleteById(id);
         }
 
         function add(eventObj) {
-            // bad approach, should use other id declaration
-            return getList()
-                .then(function (data) {
-                    var id = data.length;
-                    return edit(id, eventObj);
-                });
+            return service.add(eventObj);
         }
 
         function edit(id, eventObj) {
-            var url = 'https://starkeventsdb.firebaseio.com/events/' + id + '.json';
-
-            return $http
-                .put(url, eventObj)
-                .then(editComplete)
-                .catch(editFailed);
-
-            function editComplete(responce) {
-                return responce.data;
-            }
-            function editFailed(error) {
-                $log.error('XHR Failed for EventService add / edit: ' + JSON.stringify(error.data, null, 2));
-            }
+            return service.edit(id, eventObj);
         }
     }
 })(angular);

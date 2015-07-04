@@ -22,6 +22,7 @@
 
         this.isAuth = IsAuth;
         this.getToken = GetAuthToken;
+        this.getUid = GetUid;
     }
 
     function CreateUser(loginEmail, password) {
@@ -73,13 +74,15 @@
             email    : loginEmail,
             password : password
         }, function(error, authData) {
+            var uid;
             if (error) {
                 console.log("Login Failed!", error);
                 deferred.reject(error);
             } else {
                 console.log("Authenticated successfully with payload:", authData);
                 identity = authData;
-                deferred.resolve();
+                uid = GetUid();
+                deferred.resolve(uid);
             }
         });
         return deferred.promise;
@@ -96,5 +99,9 @@
 
     function GetAuthToken() {
         return identity ? identity.token : null;
+    }
+
+    function GetUid() {
+        return identity ? identity.uid : null;
     }
 })(angular);
