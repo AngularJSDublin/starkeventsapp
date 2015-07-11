@@ -73,6 +73,13 @@
                     .catch(getListFailed);
 
                 function getListComplete(responce) {
+                    var i, len;
+                    len = responce.data.length;
+                    for (i = 0; i < len; i += 1) {
+                        if (!responce.data[i]){
+                            responce.data[i] = {};
+                        }
+                    }
                     return responce.data;
                 }
 

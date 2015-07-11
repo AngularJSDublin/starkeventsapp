@@ -21,11 +21,11 @@
         return  {
             login: loginAdmin,
             logout: logoutAdmin,
-            register: registerAdmin
-            //delete: deleteAdmin,
-            //getDetails: getAdminDetails,
-            //updateDetails: updateDetails,
-            //getList: getList
+            register: registerAdmin,
+            delete: deleteAdmin,
+            getDetails: getAdminDetails,
+            updateDetails: updateDetails,
+            getList: getList
         };
 
         function loginAdmin (login, password) {
@@ -49,7 +49,41 @@
         }
 
         function registerAdmin(data) {
+            var obj = processAdminObj(data);
+            return auth.create(obj.login, obj.password)
+                .then(afterCreateAdmin)
+                .catch(failedCreateAdmin);
 
+            function afterCreateAdmin (uid) {
+                obj.data.id = uid;
+                obj.data.role = 'admin';
+                return service.edit(uid, obj.data)
+                    .then(function (data) {
+                        details = data;
+                        return data;
+                    })
+            }
+            function failedCreateAdmin(error) {
+                $log('Authorization for ' + login + 'failed')
+            }
+        }
+
+        function getAdminDetails() {
+            return details;
+        }
+
+        function updateDetails(data) {
+            data.id = details.id;
+            data.role = 'admin';
+            return service.edit(details.id, data)
+                .then(function (newData) {
+                    details = newData;
+                    return newData;
+                });
+        }
+
+        function getList() {
+            return service.getList();
         }
 
         function processAdminObj(adminObj){
