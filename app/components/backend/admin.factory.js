@@ -6,27 +6,26 @@
     angular.module('eventsApp.backend')
         .factory('AdminService', AdminService);
 
-    AdminService.$inject = ['$http', '$log', 'CommonBackendService'];
+    AdminService.$inject = ['$http', '$log', 'CommonBackendFactory'];
 
-    function AdminService($http, $log, service) {
+    function AdminService($http, $log, factory) {
 
-        var auth = service.auth,
+        var service = factory.getInstance({
+                name: 'AdminService',
+                url: 'https://starkeventsdb.firebaseio.com/user-roles/admins',
+                useAuth: true
+            }),
+            auth = service.auth,
             details;
-
-        service.setup({
-            name: 'AdminService',
-            url: 'https://starkeventsdb.firebaseio.com/user-roles/admins',
-            useAuth: true
-        });
 
         return  {
             login: loginAdmin,
             logout: logoutAdmin,
-            register: registerAdmin,
-            delete: deleteAdmin,
-            getDetails: getAdminDetails,
-            updateDetails: updateDetails,
-            getList: getList
+            register: registerAdmin
+            //delete: deleteAdmin,
+            //getDetails: getAdminDetails,
+            //updateDetails: updateDetails,
+            //getList: getList
         };
 
         function loginAdmin (login, password) {

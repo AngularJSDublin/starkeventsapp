@@ -6,13 +6,13 @@
     angular.module('eventsApp.backend')
         .factory('EventService', EventService);
 
-    EventService.$inject = ['$http', '$log', 'CommonBackendService', 'FirebaseService'];
+    EventService.$inject = ['$http', '$log', 'CommonBackendFactory', 'FirebaseService'];
 
-    function EventService($http, $log, service, firebase) {
+    function EventService($http, $log, factory, firebase) {
 
         var ref = firebase.getInstance();
 
-        service.setup({
+        var service = factory.getInstance({
             name: 'EventService',
             url: 'https://starkeventsdb.firebaseio.com/events',
             useAuth: false

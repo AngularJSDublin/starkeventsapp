@@ -6,11 +6,11 @@
     angular.module('eventsApp.backend')
         .factory('CategoryService', CategoryService)
 
-    CategoryService.$inject = ['$http', '$log', 'CommonBackendService'];
+    CategoryService.$inject = ['$http', '$log', 'CommonBackendFactory'];
 
-    function CategoryService($http, $log, service) {
+    function CategoryService($http, $log, serviceFactory) {
 
-        service.setup({
+        var service = serviceFactory.getInstance({
             name: 'CategoryService',
             url: 'https://starkeventsdb.firebaseio.com/categories',
             useAuth: false
