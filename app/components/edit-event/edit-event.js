@@ -18,8 +18,7 @@ angular.module('eventsApp.editEvent')
 				function(res){
 					if(res != null) {
 						$scope.event = res;
-						$scope.event.StartDate = new Date(res.StartDate);
-						$scope.event.EndDate = new Date(res.EndDate);
+						$scope.event.date = new Date(res.date);
 					}else{
 						$scope.showErrorAlert = true;
 						$scope.textAlert = "Event doesn't exist";
