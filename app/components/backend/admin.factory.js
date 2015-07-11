@@ -22,7 +22,7 @@
             login: loginAdmin,
             logout: logoutAdmin,
             register: registerAdmin,
-            delete: deleteAdmin,
+            //delete: deleteAdmin,
             getDetails: getAdminDetails,
             updateDetails: updateDetails,
             getList: getList
@@ -52,9 +52,14 @@
             var obj = processAdminObj(data);
             return auth.create(obj.login, obj.password)
                 .then(afterCreateAdmin)
+                .then(afterLoginAdmin)
                 .catch(failedCreateAdmin);
 
-            function afterCreateAdmin (uid) {
+            function afterCreateAdmin (regData) {
+                console.log('create', regData);
+                return auth.login(obj.login, obj.password);
+            }
+            function afterLoginAdmin (uid) {
                 obj.data.id = uid;
                 obj.data.role = 'admin';
                 return service.edit(uid, obj.data)

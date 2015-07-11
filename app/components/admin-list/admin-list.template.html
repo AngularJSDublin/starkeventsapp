@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <h1>Admins</h1>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="admin in vm.adminList">
+                    <td>{{admin.id}}</td>
+                    <td>{{admin.email}}</td>
+                    <td>{{admin.role}}</td>
+                </tr>
+            <tbody>
+        </table>
+    </div>
+</div>

@@ -26,6 +26,12 @@
 		  .when('/login', {
 		  	templateUrl: 'app/components/login/login.template.html'
 		  })
+		  .when( '/admin/list', {
+		    templateUrl: 'app/components/admin-list/admin-list.template.html',
+			controller: 'listAdminController',
+			controllerAs: 'vm',
+			resolve: {authenticate: authenticate}
+		  })
 		  .when('/add-event', {
 		  	templateUrl: 'app/components/add-event/add-event.html',
 		  	controller: 'addEventController'
@@ -43,7 +49,23 @@
 			templateUrl: "app/components/eventdetails/eventdetails.html",
 			controller: "EventDetailsController"
 		})
-		  .otherwise({redirectTo: '/'}); 
+		  .otherwise({redirectTo: '/'});
+
+		authenticate.$inject = ['$q', '$location', '$timeout', 'auth'];
+		function authenticate($q, $location, $timeout, auth) {
+			var deferred = $q.defer();
+			if(auth.isAuth()) {
+				deferred.resolve(auth.getUid());
+			} else {
+				console.log('reject');
+				$timeout(function() {
+					console.log('redirect to /login');
+					$location.path('/login');
+				});
+				deferred.reject();
+			}
+			return deferred.promise;
+		}
 	}
 
 })();

@@ -16,20 +16,15 @@
                 };
             });
 
-    LoginController.$inject = ['$scope', 'auth', 'AdminService'];
-    function LoginController($scope, auth, adminServise) {
+    LoginController.$inject = ['$scope', '$location', 'AdminService'];
+    function LoginController($scope, $location, adminServise) {
         var vm = this;
         vm.onSubmit = OnSubmit;
 
-        console.log('authService', auth);
-
         function OnSubmit () {
-            console.log('Submit', vm);
-            auth.login(vm.login, vm.password)
+            adminServise.login(vm.login, vm.password)
                 .then(function () {
-                    return adminServise.getList();
-                }).then(function (list) {
-                    console.log('Admins', list);
+                    return $location.path('/admins/list');
                 });
         }
 
