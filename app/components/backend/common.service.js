@@ -40,7 +40,9 @@
 
 
             function getUrl(id) {
-                var me = this;
+                var me = this,
+                    result = me.url;
+
                 // Example used urls
                 // List
                 // var url = 'https://starkeventsdb.firebaseio.com/events.json';
@@ -50,7 +52,7 @@
                 // var url = 'https://starkeventsdb.firebaseio.com/events/' + id + '.json';
                 // Add / Edit
                 // var url = 'https://starkeventsdb.firebaseio.com/events/' + id + '.json';
-                var result = me.url;
+
                 if (id) {
                     result += '/' + id + '.json';
                 } else {
@@ -113,11 +115,12 @@
 
             function add(newOnject) {
                 // bad approach, should use other id declaration
-                return getList()
+                var me = this;
+                return me.getList()
                     .then(function (data) {
                         var id = data.length;
                         newOnject.id = id;
-                        return edit(id, newOnject);
+                        return me.edit(id, newOnject);
                     });
             }
 
