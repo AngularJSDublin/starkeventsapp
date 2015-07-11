@@ -35,10 +35,9 @@ angular.module('eventsApp.editEvent')
 			$scope.deleteEvent = function(){
 				eventService.deleteById($scope.eventId).then(
 					function(result){
-						console.log(result);
+						$location.url('/event-list');
 						$scope.showSuccessAlert = true;
 						$scope.textAlert = "Event deleted";
-						$scope.event = {};
 					}
 				).catch(
 					function(result){

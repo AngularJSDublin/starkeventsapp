@@ -2,7 +2,6 @@
 
 angular.module('eventsApp.directives', [])
 .directive('listEvent', function() {
-console.log("works");
 
 	  return { 
 	  	scope : {
@@ -12,10 +11,9 @@ console.log("works");
 	  	restrict: 'E' ,
 	    templateUrl: 'app/components/list-events/directive-list-event.html' ,
 	    link: function(scope){
-	    	console.log("in link list directive" + scope.event);
+
 	    },
 		controller: function($scope){
-			console.log("in controller list directive" + $scope.event);
 			$scope.truncDesc = function() {
 				if ($scope.event) {
 				if ($scope.event.description) {
